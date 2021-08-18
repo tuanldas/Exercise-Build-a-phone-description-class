@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Xây dựng lớp mô tả điện thoại</title>
+</head>
+<body>
+<script>
+    function Mobile (battery, texteditor, incomingmessage, messagegoes, active) {
+
+        this.battery = battery;
+        this.texteditor = texteditor;
+        this.incomingmessage = incomingmessage;
+        this.messagegoes =  messagegoes;
+        this.active = active;
+
+        this.mobileStatus = function () {
+            if (active == true) {
+                alert("đã bật");
+                console.log("máy đã bật")
+            } else {
+                alert("máy đã tắt");
+            }
+        };
+
+        this.charge = function () {
+            battery++;
+            if (battery > 100){
+                alert("pin đã đầy")
+            }
+            alert("mở màn hình conso để xem được bao nhiêu phần trăm pin");
+            console.log("pin đã được" + ++battery + "%")
+        };
+
+        this.turnOf =function () {
+            this.active = -1
+            alert("máy đã tắt")
+
+        };
+
+        this.editor = function () {
+            --battery;
+            mes = prompt("Nhập văn bản");
+            alert("bạn muốn xem tin đã gửi hãy mở màn hình conso");
+            console.log( mes+ "pin còn   " + battery)
+        };
+
+        this.areReceivingNews = function () {
+            --battery;
+            if (texteditor > 10){
+                alert("bộ nhớ đã đầy")
+            }
+            alert("hãy mở màn hình conso để xem tin nhắn");
+            console.log("đã nhận tin  " + me  + "pin còn  " + battery)
+        };
+
+        this.sendingMessages = function () {
+            --battery;
+
+            console.log("đã gửi tin      " + mes  + "pin còn  " + battery)
+        };
+
+        this.seeNews = function () {
+            --battery;
+            if (incomingmessage > 10 ){
+                alert("bộ nhớ đã đầy")
+            }
+            alert("hãy mở màn hình conso để xem tin nhắn đến");
+            console.log("hello"  + mes  + "pin còn  " + battery)
+        };
+
+        this.watchTheNews = function () {
+            --battery;
+            alert("hãy mở màn hình conso để xem tin đã gửi");
+            console.log("xin chào"   + "pin còn  " + battery)
+        };
+
+    }
+
+    var mobile = new Mobile(10, 10, 10, 10,-1) ;
+    function mobileStatus() {
+        mobile.mobileStatus()
+    }
+    function charge() {
+        mobile.charge();
+    }
+    function editor() {
+        mobile.editor()
+    }
+    function areReceivingNews() {
+        mobile.areReceivingNews()
+    }
+    function sendingMessages() {
+        mobile.sendingMessages()
+    }
+    function seeNews() {
+        mobile.seeNews()
+    }
+    function watchTheNews() {
+        mobile.watchTheNews()
+    }
+    function turnof() {
+        mobile.turnOf()
+    }
+
+</script>
+<button type="button" onclick="mobileStatus()">bật máy</button>
+<button type="button" onclick="turnof()">tắt </button>
+<button type="button"  onclick="charge()">xạc pin</button>
+<button type="button" onclick="editor()">soạn thảo</button>
+<button type="button" onclick="areReceivingNews()">nhận tin</button>
+<button type="button" onclick="sendingMessages()">đã gửi tin</button>
+<button type="button" onclick="seeNews()">tin đến </button>
+<button type="button" onclick="watchTheNews()">xem tin đã gửi</button>
+</body>
+</html>
